@@ -17,6 +17,10 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.get('/einstein', function(request, response) { 
+  response.render('pages/einstein');
+});
+
 app.listen(app.get('port'), function() {
   console.log(`Listening on ${ PORT }`)
 })

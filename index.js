@@ -17,7 +17,15 @@ console.log(token);
 
 const options = {
   method: 'POST',
-  uri: 'https://api.einstein.ai/v2/oauth2/token?grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion='+token,
+  headers: {
+    'Content-type':'application/x-www-form-urlencoded'
+   
+  },
+  body: {
+    grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+    assertion:token
+  }
+  uri: 'https://api.einstein.ai/v2/oauth2/token',
   json: true 
     // JSON stringifies the body automatically
 }

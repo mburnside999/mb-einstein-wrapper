@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-require'request');
+require('request');
 const request = require('request-promise')
 
 const PORT = process.env.PORT || 5000

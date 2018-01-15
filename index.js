@@ -24,7 +24,7 @@ const options = {
   body: {
     grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
     assertion:token
-  }
+  },
   uri: 'https://api.einstein.ai/v2/oauth2/token',
   json: true 
     // JSON stringifies the body automatically

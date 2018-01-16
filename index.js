@@ -12,23 +12,7 @@ var jwt = require('jsonwebtoken');
 var cert=process.env.PEM;
 
   // get private key
-var token = jwt.sign({ sub:'heroku@56OzeWE7XXLnUutMQeYOGq9ER1489468256214',aud:'https://api.einstein.ai/v2/oauth2/token',exp: Math.floor(Date.now() / 1000) + (60 * 60) }, cert, { algorithm: 'RS256'});
-console.log(token);
 
-const options = {
-  method: 'POST',
-  headers: {
-    'Content-type':'application/x-www-form-urlencoded'
-   
-  },
-  form: {
-    grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-    assertion:token
-  },
-  uri: 'https://api.einstein.ai/v2/oauth2/token',
-  json: true 
-    // JSON stringifies the body automatically
-}
 var app = express();
 
 // view engine setup
@@ -46,9 +30,29 @@ app.get('/', function(req, resp) {
 
 app.get('/einstein', function(req, resp) { 
 
+var token = jwt.sign({ sub:'heroku@56OzeWE7XXLnUutMQeYOGq9ER1489468256214',aud:'https://api.einstein.ai/v2/oauth2/token',exp: Math.floor(Date.now() / 1000) + (60 * 60) }, cert, { algorithm: 'RS256'});
+console.log(token);
+
+const options = {
+  method: 'POST',
+  headers: {
+    'Content-type':'application/x-www-form-urlencoded'
+   
+  },
+  form: {
+    grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+    assertion:token
+  },
+  uri: 'https://api.einstein.ai/v2/oauth2/token',
+  json: true 
+    // JSON stringifies the body automatically
+}
+
+
 request(options)
   .then(function (response) {
   	console.log(response);
+  	resp.setHeader('Content-Type', 'application/json');
   	resp.send(response);
     //Handle the response
   })

@@ -46,14 +46,14 @@ app.get('/', function(req, resp) {
 
 app.get('/einstein', function(req, resp) { 
 
-//request(options)
- // .then(function (response) {
-  //	console.log(response);
-    // Handle the response
- // })
-//  .catch(function (err) {
- //   console.log(err);
- // })
+request(options)
+  .then(function (response) {
+  	console.log(response);
+    //Handle the response
+  })
+  .catch(function (err) {
+    console.log(err);
+  })
 
 
 	resp.send(token);

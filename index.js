@@ -49,7 +49,7 @@ app.get('/einstein', function(req, resp) {
 request(options)
   .then(function (response) {
   	console.log(response);
-  	resp.send(token);
+  	resp.send(response);
     //Handle the response
   })
   .catch(function (err) {

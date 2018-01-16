@@ -49,6 +49,7 @@ app.get('/einstein', function(req, resp) {
 request(options)
   .then(function (response) {
   	console.log(response);
+  	resp.send(token);
     //Handle the response
   })
   .catch(function (err) {
@@ -56,7 +57,7 @@ request(options)
   })
 
 
-	resp.send(token);
+	
   //response.render('pages/einstein');
 });
 

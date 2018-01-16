@@ -28,7 +28,7 @@ app.get('/', function(req, resp) {
   resp.render('pages/index');
 });
 
-app.get('/einstein', function(req, resp) { 
+app.get('/getaccesstoken', function(req, resp) { 
 
 var token = jwt.sign({ sub:'heroku@56OzeWE7XXLnUutMQeYOGq9ER1489468256214',aud:'https://api.einstein.ai/v2/oauth2/token',exp: Math.floor(Date.now() / 1000) + (60 * 60) }, cert, { algorithm: 'RS256'});
 console.log(token);
@@ -54,7 +54,7 @@ request(options)
   .then(function (response) {
   	console.log(response);
   	resp.setHeader('Content-Type', 'application/json');
-  	resp.send(response);
+  	resp.send(response.access_token);
     //Handle the response
   })
   .catch(function (err) {

@@ -54,7 +54,7 @@ request(options)
   .then(function (response) {
   	console.log(response);
   	resp.setHeader('Content-Type', 'application/json');
-  	resp.send(response.access_token);
+  	resp.send(response);
     //Handle the response
   })
   .catch(function (err) {

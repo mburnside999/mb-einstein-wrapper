@@ -5,8 +5,9 @@ const request = require("request-promise");
 const PORT = process.env.PORT || 5000;
 
 var jwt = require("jsonwebtoken");
-
-var cert = process.env.PEM;
+//var cert = process.env.PEM;
+var cert = process.env.MB_PEM;
+var username = process.env.MB_ACCOUNT_ID;
 
 // get private key
 
@@ -26,7 +27,7 @@ app.get("/", function (req, resp) {
 app.get("/getaccesstoken", function (req, resp) {
   var token = jwt.sign(
     {
-      sub: "heroku-anz-1912602@herokumanager.com",
+      sub: username,
       aud: "https://api.einstein.ai/v2/oauth2/token",
       exp: Math.floor(Date.now() / 1000) + 60 * 60,
     },
